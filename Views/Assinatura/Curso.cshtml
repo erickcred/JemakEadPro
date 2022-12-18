@@ -1,0 +1,46 @@
+@model JemakEadPro.Models.Curso
+
+
+<section class="container">
+    <h2>@Model.Nome</h2>
+
+    @Html.Raw(Model.Descricao)
+    <div>
+        <strong>Objetivo: </strong>@Html.Raw(Model.Objetivo)
+    </div>
+    
+    <div>
+        <strong>Carga horária: </strong>@Html.Raw(Model.CargaHoraria) horas
+    </div>
+
+    <div>
+        <strong>Para quem é esete curso: </strong> @Html.Raw(Model.ParaQuem)
+    </div>
+
+    <div>
+        <li><strong>Estrutura do curso: </strong></li>
+        <ul>
+            @if (Model.EstruturaDoCurso != null)
+            {
+                @Html.Raw(Model.EstruturaDoCurso)
+            }
+        </ul>
+    </div>
+
+    <div>
+        <strong>Acesso ilimitado: </strong>@Html.Raw(Model.AcessoIlimitado)
+    </div>
+
+    <div>
+        <strong>Metodologia: </strong>@Html.Raw(Model.Metodologia)
+    </div>
+
+    <div>
+        <strong>Excelência IOB Educação: </strong>@Html.Raw(Model.Excelencia)
+    </div>
+
+    <h4>Atenção</h4>
+
+    @Html.Raw(Model.Atencao)
+
+</section>

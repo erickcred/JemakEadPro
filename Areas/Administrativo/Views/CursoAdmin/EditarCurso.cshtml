@@ -1,0 +1,462 @@
+@using JemakEadPro.Models.Integrations.Samba.ApiSamba
+@using JemakEadPro.Models.Enums.Curso
+@model JemakEadPro.Models.Curso
+
+
+<h1>Editar de Curso</h1>
+<section class="selecao-botao mt-4 mb-4">
+    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+        <label class="btn btn-outline-primary" for="btnradio1">Curso</label>
+
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+        <label class="btn btn-outline-primary" for="btnradio2">Descricao</label>
+
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+        <label class="btn btn-outline-primary" for="btnradio3">Cadastro Videos</label>
+
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
+        <label class="btn btn-outline-primary" for="btnradio4">Videos do Curso</label>
+
+    </div>
+</section>
+
+
+<form class="pb-5 curso" action="/adm/cursos/editar" method="post" enctype="multipart/form-data">
+    <input type="number" name="Id" value="@Model.Id" hidden>
+
+    <section id="cadastro-curso">
+        <div class="row">
+            <div class="col mb-4">
+                <table for="ProjetoToken">Projeto Token: </table>
+                @if (Model.ProjetoToken == "" || Model.ProjetoToken == null)
+                {
+                    <input class="form-control" type="text" name="ProjetoToken"
+                    placeholder="Exp: 05339c13-d98d-4302-9008-a544caaaaaaa">
+                }
+                else
+                {
+                    <input class="form-control" type="text" name="ProjetoToken" value="@Model.ProjetoToken">
+                }
+
+            </div>
+
+            <div class="col mb-4">
+                <table for="ProjetoId">Id do Projeto: </table>
+                @if (Model.ProjetoId == 0)
+                {
+                    <input class="form-control" type="number" name="ProjetoId" placeholder="Exp: 11493">
+                }
+                else
+                {
+                    <input class="form-control" type="number" name="ProjetoId" value="@Model.ProjetoId">
+                }
+            </div>
+
+            <div class="col mb-4">
+                <table for="ProjetoPlayerKey">Chave do Player: </table>
+                @if (Model.ProjetoPlayerKey == "" || Model.ProjetoPlayerKey == null)
+                {
+                    <input class="form-control" type="text" name="ProjetoPlayerKey"
+                    placeholder="Exp: 2614a8f4bd593f3399fb1c6be810000">
+                }
+                else
+                {
+                    <input class="form-control" type="text" name="ProjetoPlayerKey" value="@Model.ProjetoPlayerKey">
+                }
+
+            </div>
+        </div>
+
+        <hr class="w-100">
+
+        <div class="row">
+            <div class="col-12 mb-4">
+                <table for="Nome">Nome Do Curso </table>
+                <input class="form-control" type="text" name="Nome" value="@Model.Nome">
+            </div>
+
+            <div class="col-12 mb-4">
+                <table for="file">Imagem Do Curso </table>
+                <input class="form-control" type="file" name="file" value="@Model.Imagem">
+            </div>
+        </div>
+
+        <hr class="w-100">
+
+        <div class="row">
+            <div class="col mb-4">
+                <table for="Situacao">Situacao Do Curso </table>
+                <select class="form-control" name="Situacao" id="Situacao">
+                    <option value="@Model.Situacao">@Model.Situacao</option>
+                    <option value="Gravação">Gravação (Somente na área Adm)</option>
+                    <option value="Portal">Portal</option>
+                    <option value="Liberado">Liberado (Item é apresentado na Home)</option>
+                </select>
+            </div>
+
+            <div class="col mb-4">
+                <table for="Categoria">Categoria Do Curso </table>
+                <select name="Categoria" class="form-control">
+                    <option class="form-control" value="@Model.Categoria">@Model.Categoria</option>
+                    <option class="form-control" value="Contábil">Contábil</option>
+                    <option class="form-control" value="Trabalhista">Trabalhista</option>
+                    <option class="form-control" value="Tributária">Tributária</option>
+                    <option class="form-control" value="Fiscal">Fiscal</option>
+                </select>
+            </div>
+
+            <div class="col mb-4">
+                <table for="TipoCurso">Tipo do Curso </table>
+                <select name="TipoCurso" class="form-control">
+                    @if (Model.TipoCurso == ETipoCurso.AssinaturaIed)
+                    {
+                        <option class="form-control" value="@ETipoCurso.AssinaturaIed">Assinatura IED</option>
+                        <option class="form-control" value="@ETipoCurso.Capacitacao">Capacitação</option>
+                        <option class="form-control" value="@ETipoCurso.AoVivo">Ao Vivo</option>
+                        <option class="form-control" value="@ETipoCurso.CurtaDuracao">Curta Duracao</option>
+                    } else if (Model.TipoCurso == ETipoCurso.Capacitacao)
+                    {
+                        <option class="form-control" value="@ETipoCurso.Capacitacao">Capacitação</option>
+                        <option class="form-control" value="@ETipoCurso.AssinaturaIed">Assinatura IED</option>
+                        <option class="form-control" value="@ETipoCurso.AoVivo">Ao Vivo</option>
+                        <option class="form-control" value="@ETipoCurso.CurtaDuracao">Curta Duracao</option>
+                    } else if (Model.TipoCurso == ETipoCurso.AoVivo)
+                    {
+                        <option class="form-control" value="@ETipoCurso.AoVivo">Ao Vivo</option>
+                        <option class="form-control" value="@ETipoCurso.AssinaturaIed">Assinatura IED</option>
+                        <option class="form-control" value="@ETipoCurso.Capacitacao">Capacitação</option>
+                        <option class="form-control" value="@ETipoCurso.CurtaDuracao">Curta Duracao</option>
+                    } else if (Model.TipoCurso == ETipoCurso.CurtaDuracao)
+                    {
+                        <option class="form-control" value="@ETipoCurso.CurtaDuracao">Curta Duracao</option>
+                        <option class="form-control" value="@ETipoCurso.AssinaturaIed">Assinatura IED</option>
+                        <option class="form-control" value="@ETipoCurso.Capacitacao">Capacitação</option>
+                        <option class="form-control" value="@ETipoCurso.AoVivo">Ao Vivo</option>
+                    } else
+                    {
+                        <option class="form-control">Selecione o tipo do Curso</option>
+                        <option class="form-control" value="@ETipoCurso.AssinaturaIed">Assinatura IED</option>
+                        <option class="form-control" value="@ETipoCurso.Capacitacao">Capacitação</option>
+                        <option class="form-control" value="@ETipoCurso.AoVivo">Ao Vivo</option>
+                        <option class="form-control" value="@ETipoCurso.CurtaDuracao">Curta Duracao</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <hr class="w-100">
+
+        <div class="row">
+            <div class="col mb-4">
+                <table for="CargaHoraria">CargaHoraria Do Curso </table>
+                <input class="form-control" type="number" name="CargaHoraria" value="@Model.CargaHoraria">
+            </div>
+            @* <input type="text" name="Ativo" value="@Model.Ativo"> *@
+
+            <div class="col mb-4">
+                <table for="Professor">Nome Do Professor </table>
+                <input class="form-control" type="text" name="Professor" value="@Model.Professor">
+            </div>
+
+            <div class="col mb-4">
+                <table for="DataSubmicaoCRC">Data Submição CRC </table>
+                <input class="form-control" type="date" name="DataSubmicaoCRC"
+                    value="@Model.DataSubmicaoCRC.ToString("yyyy-MM-dd")">
+            </div>
+
+            <div class="col mb-4">
+                <table for="DataVencimentoCRC">Data Vencimento CRC </table>
+                <input class="form-control" type="date" name="DataVencimentoCRC"
+                    value="@Model.DataVencimentoCRC.ToString("yyyy-MM-dd")">
+            </div>
+
+            <div class="col mb-4">
+                <table for="DataAtualizacao">Data Atualização Programa </table>
+                <input class="form-control" type="date" name="DataAtualizacao"
+                    value="@Model.DataAtualizacao.ToString("yyyy-MM-dd")">
+            </div>
+        </div>
+
+        <hr class="w-100">
+
+        <div class="row">
+            <div class="col mb-4">
+                <table for="TurmaCRC">Turma CRC </table>
+                <input class="form-control" type="text" name="TurmaCRC" value="@Model.TurmaCRC">
+            </div>
+
+            <div class="col mb-4">
+                <table for="CodigoCursoCRC">Codigo Curso CRC </table>
+                <input class="form-control" type="text" name="CodigoCursoCRC" value="@Model.CodigoCursoCRC">
+            </div>
+
+            <div class="col mb-4">
+                <table for="CategoriasPontuacao">Categorias Pontuação </table>
+                <input class="form-control" type="text" name="CategoriasPontuacao" value="@Model.CategoriasPontuacao">
+            </div>
+
+            <div class="col mb-4">
+                <table for="Pontos">Pontos </table>
+                <input class="form-control" type="number" name="Pontos" value="@Model.Pontos">
+            </div>
+        </div>
+    </section>
+
+    <section id="cadastro-descricao" hidden>
+        <div class="row">
+            <div class="col mb-4">
+                <label for="Descricao">Descricao Do Curso </label>
+                <textarea name="Descricao" cols="30" rows="5" class="form-control">@Model.Descricao</textarea>
+            </div>
+
+            <div class="col mb-4">
+                <label for="Objetivo">Objetivo Do Curso </label>
+                <textarea name="Objetivo" cols="30" rows="5" class="form-control">@Model.Objetivo</textarea>
+            </div>
+        </div>
+
+        <hr class="w-100">
+
+        <div class="row">
+            <div class="col mb-4">
+                <label for="ParaQuem">Para quem é este Curso </label>
+                <textarea name="ParaQuem" cols="30" rows="5" class="form-control">@Model.ParaQuem</textarea>
+            </div>
+
+            <div class="col mb-4">
+                <label for="EstruturaDoCurso">Estrutura Do Curso </label>
+                <textarea name="EstruturaDoCurso" cols="30" rows="5"
+                    class="form-control">@Model.EstruturaDoCurso</textarea>
+            </div>
+        </div>
+
+        <hr class="w-100">
+
+        <div class="row">
+            <div class="col mb-4">
+                <label for="AcessoIlimitado">Acesso ilimitado ao Curso </label>
+                <textarea name="AcessoIlimitado" cols="30" rows="5"
+                    class="form-control">@Model.AcessoIlimitado</textarea>
+            </div>
+
+            <div class="col mb-4">
+                <label for="Metodologia">Metodologia do Curso </label>
+                <textarea name="Metodologia" cols="30" rows="5" class="form-control">@Model.Metodologia</textarea>
+            </div>
+        </div>
+
+        <hr class="w-100">
+
+        <div class="row">
+            <div class="col mb-4">
+                <label for="Excelencia">Excelencia </label>
+                <textarea name="Excelencia" cols="30" rows="5" class="form-control">@Model.Excelencia</textarea>
+            </div>
+
+            <div class="col mb-4">
+                <label for="Atencao">Atencao </label>
+                <textarea name="Atencao" cols="30" rows="5" class="form-control">@Model.Atencao</textarea>
+            </div>
+        </div>
+    </section>
+
+    <br>
+    <button type="submit" class="btn btn-outline-success">Atualizar</button>
+</form>
+
+
+
+@{
+    ProjetoRepository samba = new ProjetoRepository();
+    samba.token = Model.ProjetoToken;
+    samba.pid = Model.ProjetoId;
+
+    if (samba.token != "" && samba.pid != 0)
+    {
+        var mediaTask = samba.GetSambaMediaAsync();
+        
+        @foreach (var cursoVideo in Model.Videos)
+        {
+            <p class="validaPlayer" hidden>@cursoVideo.VideoId</p>
+        }
+        
+        
+        <section id="cadastro-video" hidden>
+        @foreach (var mediaItem in mediaTask.Result)
+        {
+                   
+            <form action="/adm/videos/criar" method="post">
+                <input type="number" name="CursoId" value="@Model.Id" hidden>
+                <div class="row">
+                    <div class="col-12 mt-4">
+                        <label for="Nome">Nome: </label>
+                        <input name="Nome" type="text" class="form-control" placeholder="Exp: Modulo 1 Introdução">
+                    </div>
+
+                    <div class="col-2 mt-4">
+                        <label for="Ordem">Ordem de apresentação: </label>
+                        <input name="Ordem" type="number" class="form-control" placeholder="Ordem em de apresentação">
+                    </div>
+
+                    <div class="col-4 mt-4">
+                        <label for="ProjetoId">Chave do Player: </label>
+                        <input name="ProjetoId" type="text" class="form-control" value="@Model.ProjetoPlayerKey" style="pointer-events:none;">
+                    </div>
+
+                    <div class="col-4 mt-4">
+                        <label for="">Title Projeto: </label>
+                        <input class="form-control" type="text" value="@mediaItem.Title" style="pointer-events:none;">
+                    </div>
+
+                    <div class="col-3 mt-4">
+                        <label for="VideoId">Media ID: </label>
+                        <input name="VideoId" type="text" class="form-control" value="@mediaItem.Id" style="pointer-events:none;">
+                    </div>
+
+                    @foreach (var url in mediaItem.Files)
+                    {
+                        if (url.outputName == "480p")
+                        {
+                            <div class="col-2 mt-4">
+                                <label for="Url">Duração: </label>
+                                <input name="Duracao" type="text" class="col-2 form-control" value="@url.FileInfo.duration" style="pointer-events:none;">
+                            </div>
+
+                            <div class="col mt-4">
+                                <label for="Url">Media Url: </label>
+                                <input name="Url" class="form-control" value="@url.url" style="pointer-events:none;">
+
+                            </div>
+                            <video controls style="width: 250px;" src="@url.url"></video>
+                        }
+                    }
+                </div>
+                <br>
+                <button type="submit" class="btn btn-outline-success">Cadastrar Vídeo</button>
+                @* <hr class="w-100"> *@
+                <hr class="w-100 mb-5">            
+            </form>
+        }
+
+        </section>
+    } 
+}
+
+
+<section id="videos-curso" hidden>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th></th>
+                <th>#</th>
+                <th>Ordem Apre</th>
+                <th>Nome</th>
+                <th>Vídeo</th>
+                <th>Curso</th>
+                <th>ProjetoId</th>
+                <th>VideoId</th>
+                <th>Duracao</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var video in Model.Videos.OrderBy(x => x.Ordem))
+        {
+            <tr>
+                <td>
+                    <button class="btn btn-outline-secondary" data-bs-toggle="dropdown">
+                        <span data-feather="menu"></span>
+                    </button>
+                    <ul class="dropdown-menu mx-0 shadow">
+                        <li>
+                            <a class="dropdown-item d-flex gap-2 align-items-center"
+                            href="/adm/videos/editar/@video.Id">
+                                <span data-feather="edit" style="font-size: 2rem;"></span>
+                                Alterar
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                    </ul>
+                </td>
+                <td>@video.Id</td>
+                <td>@video.Ordem</td>
+                <td>@video.Nome</td>
+                <td>
+                    <video controls style="width: 200px;" src="@video.Url"></video>
+                </td>
+                <td>(Id: @video.Curso.Id) - @video.Curso.Nome</td>
+                <td>@video.ProjetoId</td>
+                <td>@video.VideoId</td>
+                <td>@video.Duracao</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</section>
+
+
+
+<script>
+    let playerKey = document.querySelectorAll("input[name='VideoId']");
+    let validaPlayer = document.querySelectorAll(".validaPlayer");
+
+    validaPlayer.forEach(vpplayer => {
+        playerKey.forEach(pkey => {
+            if (vpplayer.textContent == pkey.value) {
+                console.log(vpplayer.textContent +" = "+ pkey.value)
+                pkey.parentElement.parentElement.parentElement.style = "display: none";
+            }
+        })
+    });
+
+</script>
+
+
+<script>
+
+    const cadastroCurso = document.querySelector("#btnradio1");
+    const cadastroDescricao = document.querySelector("#btnradio2");
+    const cadastroVideos = document.querySelector("#btnradio3");
+    const videosCurso = document.querySelector("#btnradio4");
+
+    let sectionCursos = document.getElementById("cadastro-curso");
+    let sectionDescricao = document.getElementById("cadastro-descricao");
+    let sectionVideos = document.getElementById("cadastro-video");
+    let formCurso = document.querySelector("form.curso");
+    let sectionVideosCurso =  document.getElementById("videos-curso");
+
+    cadastroCurso.addEventListener("click", () => {
+        sectionCursos.removeAttribute("hidden");
+        sectionDescricao.setAttribute("hidden", "true");
+        sectionVideos.setAttribute("hidden", "true");
+        formCurso.removeAttribute("hidden");
+        sectionVideosCurso.setAttribute("hidden", "true");
+    });
+
+    cadastroDescricao.addEventListener("click", () => {
+        sectionCursos.setAttribute("hidden", "true");
+        sectionDescricao.removeAttribute("hidden");
+        sectionVideos.setAttribute("hidden", "true");
+        formCurso.removeAttribute("hidden");
+        sectionVideosCurso.setAttribute("hidden", "true");
+    });
+
+    cadastroVideos.addEventListener("click", () => {
+        sectionCursos.setAttribute("hidden", "true");
+        sectionDescricao.setAttribute("hidden", "true");
+        sectionVideos.removeAttribute("hidden");
+        formCurso.setAttribute("hidden", "true");
+        sectionVideosCurso.setAttribute("hidden", "true");
+    });
+
+    videosCurso.addEventListener("click", () => {
+        sectionCursos.setAttribute("hidden", "true");
+        sectionDescricao.setAttribute("hidden", "true");
+        sectionVideos.setAttribute("hidden", "true");
+        formCurso.setAttribute("hidden", "true");
+        sectionVideosCurso.removeAttribute("hidden");
+    });
+
+</script>

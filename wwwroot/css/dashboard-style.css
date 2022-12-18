@@ -1,0 +1,8 @@
+td img.imagem-curso {
+  width: 200px;
+}
+td img.imagem-usuario {
+  width: 100px;
+  margin: 0;
+  padding: 0;
+}

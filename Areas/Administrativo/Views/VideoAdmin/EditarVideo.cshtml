@@ -1,0 +1,46 @@
+@model JemakEadPro.Models.Video
+
+
+<form action="/adm/videos/editar" method="post">
+    <input type="number" name="Id" value="@Model.Id" hidden>
+    <div class="row">
+        <div class="col-12 mt-4">
+            <label for="Nome">Nome: </label>
+            <input name="Nome" type="text" class="form-control" value="@Model.Nome">
+        </div>
+
+        <div class="col-2 mt-4">
+            <label for="Ordem">Ordem de apresentação: </label>
+            <input name="Ordem" type="number" class="form-control" value="@Model.Ordem">
+        </div>
+
+        <div class="col-4 mt-4">
+            <label for="ProjetoId">Chave do Player: </label>
+            <input name="ProjetoId" type="text" class="form-control" value="@Model.ProjetoId"
+                style="pointer-events:none;">
+        </div>
+
+        <div class="col-3 mt-4">
+            <label for="VideoId">Media ID: </label>
+            <input name="VideoId" type="text" class="form-control" value="@Model.VideoId" style="pointer-events:none;">
+        </div>
+
+        <div class="col-2 mt-4">
+            <label for="Url">Duração: </label>
+            <input name="Duracao" type="text" class="col-2 form-control" value="@Model.Duracao"
+        style="pointer-events:none;">
+        </div>
+
+        <div class="col-12 mt-4">
+            <label for="Url">Media Url: </label>
+            <input name="Url" class="form-control" value="@Model.Url" style="pointer-events:none;">
+
+        </div>
+        <video controls style="width: 250px;" src="@Model.Url"></video>
+
+    </div>
+    <br>
+    <button type="submit" class="btn btn-outline-success">Altualizar Vídeo</button>
+    @* <hr class="w-100"> *@
+    <hr class="w-100 mb-5">
+</form>

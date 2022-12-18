@@ -1,0 +1,223 @@
+@model JemakEadPro.Models.Curso
+@using JemakEadPro.Models.Enums.Curso
+
+
+
+
+<h1>Cadastro de Curso</h1>
+<section class="selecao-botao mt-4 mb-4">
+    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+        <label class="btn btn-outline-primary" for="btnradio1">Curso</label>
+
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+        <label class="btn btn-outline-primary" for="btnradio2">Descricao</label>
+
+    </div>
+</section>
+
+<form class="pb-5" action="/adm/cursos/criar" method="post" enctype="multipart/form-data">
+    <section id="cadastro-curso">
+        <div class="row">
+            <div class="col mb-4">
+                <table for="ProjetoToken">Projeto Token: </table>
+                <input class="form-control" type="text" name="ProjetoToken" placeholder="Exp: 05339c13-d98d-4302-9008-a544caaaaaaa">
+            </div>
+
+            <div class="col mb-4">
+                <table for="ProjetoId">Id do Projeto: </table>
+                <input class="form-control" type="number" name="ProjetoId" placeholder="Exp: 11493">
+            </div>
+
+            <div class="col mb-4">
+                <table for="ProjetoPlayerKey">Data Submição CRC </table>
+                <input class="form-control" type="text" name="ProjetoPlayerKey" placeholder="Exp: 2614a8f4bd593f3399fb1c6be810000">
+            </div>
+        </div>
+
+        <hr class="w-100">
+
+        <div class="row">
+            <div class="col-12 mb-4">
+                <table for="Nome">Nome Do Curso </table>
+                <input class="form-control" type="text" name="Nome" placeholder="Nome">
+            </div>
+
+            <div class="col-12 mb-4">
+                <table for="file">Imagem Do Curso </table>
+                <input class="form-control" type="file" name="file" placeholder="Imagem">
+            </div>
+        </div>
+
+        <hr class="w-100">
+
+        <div class="row">
+            <div class="col mb-4">
+                <table for="Situacao">Situacao Do Curso </table>
+                <select class="form-control" name="Situacao" id="Situacao">
+                    <option>Selecione a Situação</option>
+                    <option value="Gravação">Gravação (Somente na área Adm)</option>
+                    <option value="Portal">Portal</option>
+                    <option value="Liberado">Liberado (Item é apresentado na Home)</option>
+                </select>
+            </div>
+
+            <div class="col mb-4">
+                <table for="Categoria">Categoria Do Curso </table>
+                <select name="Categoria" class="form-control">
+                    <option class="form-control">Selecione uma Categoria</option>
+                    <option class="form-control" value="Contábil">Contábil</option>
+                    <option class="form-control" value="Trabalhista">Trabalhista</option>
+                    <option class="form-control" value="Tributária">Tributária</option>
+                    <option class="form-control" value="Fiscal">Fiscal</option>
+                </select>
+            </div>
+
+            <div class="col mb-4">
+                <table for="TipoCurso">Tipo do Curso </table>
+                <select name="TipoCurso" class="form-control">
+                    <option class="form-control">Selecione o tipo do Curso</option>
+                    <option class="form-control" value="@ETipoCurso.AssinaturaIed">Assinatura IED</option>
+                    <option class="form-control" value="@ETipoCurso.Capacitacao">Capacitação</option>
+                    <option class="form-control" value="@ETipoCurso.AoVivo">Ao Vivo</option>
+                    <option class="form-control" value="@ETipoCurso.CurtaDuracao">Curta Duracao</option>
+                </select>
+            </div>
+        </div>
+
+        <hr class="w-100">
+
+        <div class="row">
+            <div class="col mb-4">
+                <table for="CargaHoraria">CargaHoraria Do Curso </table>
+                <input class="form-control" type="number" name="CargaHoraria" placeholder="CargaHoraria">
+            </div>
+            @* <input type="text" name="Ativo" placeholder="Ativo"> *@
+
+            <div class="col mb-4">
+                <table for="Professor">Nome Do Professor </table>
+                <input class="form-control" type="text" name="Professor" placeholder="Professor">
+            </div>
+
+            <div class="col mb-4">
+                <table for="DataSubmicaoCRC">Data Submição CRC </table>
+                <input class="form-control" type="date" name="DataSubmicaoCRC" placeholder="DataSubmicaoCRC">
+            </div>
+
+            <div class="col mb-4">
+                <table for="DataVencimentoCRC">Data Vencimento CRC </table>
+                <input class="form-control" type="date" name="DataVencimentoCRC" placeholder="DataVencimentoCRC">
+            </div>
+        </div>
+
+        <hr class="w-100">
+
+        <div class="row">
+            <div class="col mb-4">
+                <table for="TurmaCRC">Turma CRC </table>
+                <input class="form-control" type="text" name="TurmaCRC" placeholder="79610">
+            </div>
+
+            <div class="col mb-4">
+                <table for="CodigoCursoCRC">Codigo Curso CRC </table>
+                <input class="form-control" type="text" name="CodigoCursoCRC" placeholder="SP21254">
+            </div>
+
+            <div class="col mb-4">
+                <table for="CategoriasPontuacao">Categorias Pontuação </table>
+                <input class="form-control" type="text" name="CategoriasPontuacao" placeholder="AUD, PRG, PER, PRT">
+            </div>
+
+            <div class="col mb-4">
+                <table for="Pontos">Pontos </table>
+                <input class="form-control" type="number" name="Pontos" placeholder="10">
+            </div>
+        </div>
+    </section>
+
+    <section id="cadastro-descricao" hidden>
+        <div class="row">
+            <div class="col mb-4">
+                <table for="Descricao">Descricao Do Curso </table>
+                <textarea name="Descricao" cols="30" rows="5" class="form-control" placeholder="EXP: É a construção de um banco de dados de uma empresa ou entidade, que permita a sua utilização de forma flexível, por diversos tipos de usuários"></textarea>
+            </div>
+
+            <div class="col mb-4">
+                <table for="Objetivo">Objetivo Do Curso </table>
+                <textarea name="Objetivo" cols="30" rows="5" class="form-control" placeholder="EXP: Desenvolver estudos acerca da utilização da contabilidade gerencial como instrumento para o acompanhamento da evolução de uma entidade"></textarea>
+            </div>
+        </div>
+
+        <hr class="w-100">
+
+        <div class="row">
+            <div class="col mb-4">
+                <table for="ParaQuem">Para quem é este Curso </table>
+                <textarea name="ParaQuem" cols="30" rows="5" class="form-control" placeholder="EXP: Acadêmicos e profissionais de ciências contábeis, administração e finanças, além de contabilistas"></textarea>
+            </div>
+
+            <div class="col mb-4">
+                <table for="EstruturaDoCurso">Estrutura Do Curso </table>
+                <textarea name="EstruturaDoCurso" cols="30" rows="5" class="form-control" placeholder="EXP: Videoaulas online
+                Material de apoio para download
+                Exemplos práticos ou cases
+                Avaliação
+                Certificado"></textarea>
+            </div>
+        </div>
+
+        <hr class="w-100">
+
+        <div class="row">
+            <div class="col mb-4">
+                <table for="AcessoIlimitado">Acesso ilimitado ao Curso </table>
+                <textarea name="AcessoIlimitado" cols="30" rows="5" class="form-control" placeholder="EXP: Os conteúdos ficam disponíveis 24 horas por dia, 7 dias por semana, e você poderá assisti-lo quantas vezes precisar, dentro do período de contratado."></textarea>
+            </div>
+
+            <div class="col mb-4">
+                <table for="Metodologia">Metodologia do Curso </table>
+                <textarea name="Metodologia" cols="30" rows="5" class="form-control" placeholder="EXP: Nossos cursos são compostos por 80% de videoaulas, com conteúdos planejados especialmente para EAD, divididos por temática, com vídeos com aproximadamente 10 minutos cad"></textarea>
+            </div>
+        </div>
+
+        <hr class="w-100">
+
+        <div class="row">
+            <div class="col mb-4">
+                <table for="Excelencia">Excelencia </table>
+                <textarea name="Excelencia" cols="30" rows="5" class="form-control" placeholder="EXP: A IOB atua há mais de 50 anos no mercado, é Capacitadora do CRC há 17 anos, e já capacitou milhares de profissionais."></textarea>
+            </div>
+
+            <div class="col mb-4">
+                <table for="Atencao">Atencao </table>
+                <textarea name="Atencao" cols="30" rows="5" class="form-control" placeholder="EXP: 1) * Conteúdo elaborado com base na legislação vigente até a data de gravação realizada em 04/01/2020 do curso. Recomenda-se vigilância quanto a eventuais alterações posteriores.
+
+                2) Este curso, salvo em casos de atualização de "></textarea>
+            </div>
+        </div>
+    </section>
+
+
+    <br>
+    <button type="submit" class="btn btn-outline-success">Cadastrar</button>
+</form>
+
+
+
+<script>
+
+    const cadastroCurso = document.querySelector("#btnradio1");
+    const cadastroDescricao = document.querySelector("#btnradio2");
+    let sectionCursos = document.getElementById("cadastro-curso");
+    let sectionDescricao = document.getElementById("cadastro-descricao");
+
+    cadastroCurso.addEventListener("click", () => {
+        sectionCursos.removeAttribute("hidden");
+        sectionDescricao.setAttribute("hidden", "true");
+    });
+    cadastroDescricao.addEventListener("click", () => {
+        sectionDescricao.removeAttribute("hidden");
+        sectionCursos.setAttribute("hidden", "true");
+    });
+
+</script>

@@ -1,0 +1,76 @@
+@model IEnumerable<JemakEadPro.Models.Usuario>
+
+<section class="lista-cursos mt-4">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th></th>
+                <th>#</th>
+                <th>Status</th>
+                <th>Nome</th>
+                <th>Imagem</th>
+                <th>CPF</th>
+                <th>E-mail</th>
+                <th>Carteira Profissional</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var usuario in Model.OrderByDescending(x => x.Id))
+        {
+            <tr>
+                <td>
+                    <button class="btn btn-outline-secondary" data-bs-toggle="dropdown">
+                        <span data-feather="menu"></span>
+                    </button>
+                    <ul class="dropdown-menu mx-0 shadow">
+                        <li>
+                            <a class="dropdown-item d-flex gap-2 align-items-center"
+                            href="/adm/usuarios/editar/@usuario.Id">
+                                <span data-feather="edit" style="font-size: 2rem;"></span>
+                                Alterar
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            @if (usuario.Ativo == true)
+                            {
+                                <a class="dropdown-item dropdown-item-danger d-flex gap-2 align-items-center"
+                            href="/adm/usuarios/inativar/@usuario.Id">
+                                    <span data-feather="trash"></span>
+                                    Inativar
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="dropdown-item dropdown-item-danger d-flex gap-2 align-items-center"
+                            href="/adm/usuarios/ativar/@usuario.Id">
+                                    <span data-feather="trash"></span>
+                                    Ativar
+                                </a>
+                            }
+                        </li>
+                    </ul>
+                </td>
+                <td>@usuario.Id</td>
+                @if (usuario.Ativo == true)
+                {
+                    <th class="text-success">Ativo</th>
+                }
+                else
+                {
+                    <th class="text-danger">Inativo</th>
+                }
+                <td>@usuario.Nome</td>
+                <td>
+                    <img class="imagem-usuario" src="/@usuario.Imagem" alt="@usuario.Imagem">
+                </td>
+                <td>@usuario.CPF</td>
+                <td>@usuario.Email</td>
+                <td>@usuario.CarteiraProfissional</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</section>

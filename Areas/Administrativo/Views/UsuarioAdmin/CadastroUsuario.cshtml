@@ -1,0 +1,135 @@
+@model JemakEadPro.Models.Usuario
+
+
+
+<div class="container">
+    <h1>Cadastro de Usuario</h1>
+
+    <form action="/adm/usuarios/criar" method="post" enctype="multipart/form-data">
+
+        <div class="row">
+            <div class="col">
+                <label for="Nome">Nome: </label>
+                <input class="form-control" type="text" name="Nome" placeholder="Nome">
+            </div>
+
+            <div class="col">
+                <label for="Email">E-mail: </label>
+                <input class="form-control" type="text" name="Email" placeholder="E-mail">
+            </div>
+
+            <div class="col">
+                <label for="CPF">CPF: </label>
+                <input class="form-control" type="text" name="CPF" placeholder="CPF">
+            </div>
+
+            <div class="col">
+                <label for="RG">RG: </label>
+                <input class="form-control" type="text" name="RG" placeholder="RG">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <label for="Telefone">Telefone: </label>
+                <input class="form-control" type="text" name="Telefone" placeholder="Telefone">
+            </div>
+
+            <div class="col">
+                <label for="Celular">Celular: </label>
+                <input class="form-control" type="text" name="Celular" placeholder="Celular">
+            </div>
+
+            <div class="col">
+                <label for="TelefoneTrabalho">Telefone Trabalho: </label>
+                <input class="form-control" type="text" name="TelefoneTrabalho" placeholder="Telefone Trabalho">
+            </div>
+
+            <div class="col">
+                <label for="Sexo">Sexo: </label>
+                <input class="form-control" type="text" name="Sexo" placeholder="Sexo">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <label for="DataNascimento">Data Nascimento: </label>
+                <input class="form-control" type="date" name="DataNascimento" placeholder="Data Nascimento">
+            </div>
+
+            <div class="col">
+                <label for="CarteiraProfissional">Carteira Profissional: </label>
+                <input class="form-control" type="text" name="CarteiraProfissional" placeholder="CRM, CRC, OAB etc..">
+            </div>
+
+            <div class="col">
+                <label for="file">Imagem: </label>
+                <input class="form-control" type="file" name="file">
+            </div>
+        </div>
+
+        <hr class="w-100 mt-4 mb-5">
+
+
+        <div class="row">
+            <div class="col">
+                <label for="CEP">CEP: </label>
+                <input class="form-control" type="text" name="CEP" placeholder="CEP">
+            </div>
+
+            <div class="col">
+                <label for="Endereco">Endereço: </label>
+                <input class="form-control" type="text" name="Endereco" placeholder="Endereco">
+            </div>
+
+            <div class="col">
+                <label for="Numero">Número: </label>
+                <input class="form-control" type="text" name="Numero" placeholder="Numero">
+            </div>
+
+            <div class="col">
+                <label for="Complemento">Complemento: </label>
+                <input class="form-control" type="text" name="Complemento" placeholder="Complemento">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <label for="Estado">Estado: </label>
+                <input class="form-control" type="text" name="Estado" placeholder="Estado">
+            </div>
+
+            <div class="col">
+                <label for="Cidade">Cidade: </label>
+                <input class="form-control" type="text" name="Cidade" placeholder="Cidade">
+            </div>
+
+            <div class="col">
+                <label for="Bairro">Bairro: </label>
+                <input class="form-control" type="text" name="Bairro" placeholder="Bairro">
+            </div>
+        </div>
+
+        <hr class="w-100 mt-4 mb-5">
+
+        <div class="row">
+            <div class="col">
+                <label for="NomeResponsavel">Nome/Empresa Responsavel: </label>
+                <input class="form-control" type="text" name="NomeResponsavel" placeholder="Nome Responsavel">
+            </div>
+
+            <div class="col">
+                <label for="CpfCnpj">CPF/CNPJ: </label>
+                <input class="form-control" type="text" name="CpfCnpj" placeholder="CpfCnpj">
+            </div>
+
+            <div class="col">
+                <label for="ResponsavelTelefone">Telefone Responsavel: </label>
+                <input class="form-control" type="text" name="ResponsavelTelefone" placeholder="Responsavel Telefone">
+            </div>
+        </div>
+
+        <br>
+        <button type="submit" class="btn btn-outline-success">Cadastrar</button>
+    </form>
+</div>

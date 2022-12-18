@@ -1,0 +1,62 @@
+@model IEnumerable<JemakEadPro.Models.Video>
+
+
+<form action="/adm/cursos" method="post" class="mt-4">
+
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <input type="text" id="pesquisa" name="pesquisa" class="form-control" placeholder="Pesquisar">
+        </div>
+        <div class="col-auto">
+            <label for="pesquisa" class="col-form-label"><span data-feather="search"></span></label>
+        </div>
+    </div>
+
+</form>
+
+
+<section class="lista-cursos mt-4">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th></th>
+                <th>#</th>
+                <th>Nome</th>
+                <th>Curso</th>
+                <th>ProjetoId</th>
+                <th>VideoId</th>
+                <th>Duracao</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var video in Model.OrderByDescending(x => x.Id))
+        {
+            <tr>
+                <td>
+                    <button class="btn btn-outline-secondary" data-bs-toggle="dropdown">
+                        <span data-feather="menu"></span>
+                    </button>
+                    <ul class="dropdown-menu mx-0 shadow">
+                        <li>
+                            <a class="dropdown-item d-flex gap-2 align-items-center"
+                            href="/adm/videos/editar/@video.Id">
+                                <span data-feather="edit" style="font-size: 2rem;"></span>
+                                Alterar
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                    </ul>
+                </td>
+                <td>@video.Id</td>
+                <td>@video.Nome</td>
+                <td>(Id: @video.Curso.Id) - @video.Curso.Nome</td>
+                <td>@video.ProjetoId</td>
+                <td>@video.VideoId</td>
+                <td>@video.Duracao</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</section>

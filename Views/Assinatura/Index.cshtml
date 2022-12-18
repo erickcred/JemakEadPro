@@ -1,0 +1,548 @@
+@model IEnumerable<JemakEadPro.Models.Curso>
+
+<style>
+    .hero {
+        background-image: linear-gradient(0deg, rgba(80, 0, 114, 0), rgba(80, 0, 114, 0)), linear-gradient(0deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.08)), url("https://www.iobeducacao.com/imagemsite/1077/estudante-de-curso-online.png") !important;
+    }
+
+    .hero-btn {
+        display: none !important;
+    }
+</style>
+
+<header class="hero">
+    <div class="container hero-content">
+        <div>
+            <h1 class="hero-title">Assinatura</h1>
+            <p class="hero-text">A bordo da IOB Educação, você pode aprender algo novo todo dia. Assine já!</p>
+
+            <div class="hero-btn">
+                <a href="https://api.whatsapp.com/send?phone=5511964868215&text=Ol%C3%A1%21%20Quero%20conhecer%20a%20IOB%20Educa%C3%A7%C3%A3o%20e%20suas%20condi%C3%A7%C3%B5es%20para%202022%21&utm_campaign=MKT%20Produto%20%7C%20Conte%C3%BAdo&utm_medium=email&_hsmi=2&_hsenc=p2ANqtz-9SekyD8h_2FIZbB3eympXlJ0rHEbC7Js9VPLwt9SXFPzyk8Tp-14ucxlZDlVgPjXVfz58W6XdjvpQZlUwGltGnHstMJTS2-68_W05dHWbPQr7ywew&utm_content=2&utm_source=hs_email"
+                    target="_blank" class=" text-decoration-none btn btn-iob btn-outline-white mt-4">Converse pelo
+                    WhatsApp
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16.01 11H4V13H16.01V16L20 12L16.01 8V11Z" fill="white" />
+                    </svg>
+                </a>
+
+                <button class="btn btn-iob btn-pink mt-3" data-toggle="modal" data-target="#queroConhecer">Aprenda
+                    com a IOB Educação</button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="categories">
+    <div class="container categories-content">
+        <a class="title">Qual é o seu mundo?</a>
+        <a href="https://www.iobeducacao.com/cursos/area-contabil" class="categories-link">Contábil/Fiscal</a>
+        <!-- <a href="#" class="categories-link">Fiscal</a> -->
+        <a href="https://www.iobeducacao.com/cursos/area-trabalhista"
+            class="categories-link">Trabalhista/Previdenciária</a>
+        <a href="https://www.iobeducacao.com/cursos/cursos-pontuados" class="categories-link">Pontuados</a>
+        <a href="https://www.iobeducacao.com/cursos/area-tributaria" class="categories-link">Tributária/Fiscal</a>
+        <a href="https://www.iobeducacao.com/cursos/lgpd-outros-temas" class="categories-link">LGPD</a>
+        <button class="btn btn-sm btn-iob btn-pink" data-toggle="modal" data-target="#queroConhecer">Assine agora &nbsp;
+            <svg width="16" height="8" viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12.01 3H0V5H12.01V8L16 4L12.01 0V3Z" fill="white" />
+            </svg>
+        </button>
+    </div>
+</div>
+
+
+<section class="destaques iob-space" hidden>
+    <div class="container">
+        <div class="cursos-destaques">
+            <div>
+                <p class="overline">Assinatura Completa e Modular</p>
+                <h2 class="section-title">Conecte-se ao máximo de conhecimento</h2>
+                <p class="card-text-iob">Com a assinatura da IOB Educação, você pode acessar diversos cursos de forma
+                    ilimitada. Escolha entre o plano completo, com todas as áreas temáticas
+                    (Contábil/Tributária/Trabalhista e Previdenciária) ou o plano modular, com apenas uma área
+                    específica.</p>
+
+                <div class="cursos-destaques-link">
+                    <a href="https://api.whatsapp.com/send?phone=5511964868215&text=Ol%C3%A1%21%20Quero%20conhecer%20a%20IOB%20Educa%C3%A7%C3%A3o%20e%20suas%20condi%C3%A7%C3%B5es%20para%202022%21&utm_campaign=MKT%20Produto%20%7C%20Conte%C3%BAdo&utm_medium=email&_hsmi=2&_hsenc=p2ANqtz-9SekyD8h_2FIZbB3eympXlJ0rHEbC7Js9VPLwt9SXFPzyk8Tp-14ucxlZDlVgPjXVfz58W6XdjvpQZlUwGltGnHstMJTS2-68_W05dHWbPQr7ywew&utm_content=2&utm_source=hs_email"
+                        target="_blank" class="text-decoration-none btn btn-sm btn-iob btn-outline-pink mt-4">Converse
+                        com o especialista
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.01 11H4V13H16.01V16L20 12L16.01 8V11Z" fill="white" />
+                        </svg>
+                    </a>
+
+                    <button class="btn btn-iob btn-pink mt-4" data-toggle="modal" data-target="#queroConhecer">Quero ser
+                        assinante &nbsp;
+                        <svg width="16" height="8" viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.01 3H0V5H12.01V8L16 4L12.01 0V3Z" fill="white" />
+                        </svg>
+                    </button>
+
+                </div>
+            </div>
+            <img src="https://www.iobeducacao.com/imagemsite/1069/estudantes-plataforma-ead.png"
+                alt="Dois estudantes acessando a plataforma ead pelo notebook">
+
+            <!-- Modal Assinatura completa -->
+            <div id="nomeModal" class="modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <!-- Aqui -->
+                        <div class="card-body" style="padding: 10px 40px">
+                            <script charset="utf-8" type="text/javascript"
+                                src="//js.hsforms.net/forms/embed/v2.js"></script>
+                            <script>
+                                hbspt.forms.create({
+                                    region: "na1",
+                                    portalId: "425682",
+                                    formId: "a1cf2bd7-db67-420d-8b0f-77123ec54200"
+                                });
+                            </script>
+                        </div>
+                        <!-- --->
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Assinatura completa -->
+        </div>
+
+
+    </div>
+</section>
+
+<section class="mini-banner assinaturas iob-space">
+
+    <div class="container">
+        <p class="overline">Modelos de Assinaturas</p>
+
+        <div id="btn-nav" class="mini-banner-btn-nav mb-3">
+            <span class="bbt-nav btn-esquerda left-circle active">Assinatura completa</span>
+            <span class="bbt-nav btn-central left-circle">Contábil</span>
+            <span class="bbt-nav btn-central center-circle">Trabalhista</span>
+            <span class="bbt-nav btn-direita right-circle">Tributária</span>
+        </div>
+
+        <div class="mini-banner-modulos item1 transisao-left">
+
+            <div class="mini-banner-modulos-img">
+                <img src="https://production-hypercube-headless-cms-strapi-site-files.s3.amazonaws.com/areas_tematicas_3db76f3d79.png"
+                    alt="">
+            </div>
+
+            <div class="mini-banner-modulos-conteudo">
+                <h1 class="section-title">Assinatura Completa</h1>
+                <div class="checks container">
+                    <div class="check">
+                        <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 2L5.65714 12.5L0 6.75801L1.45029 5.28598L5.65714 9.54549L14.5 0.5L16 2Z"
+                                fill="#0ADD91" />
+                        </svg>
+                        <span>+3000 videoaulas com acesso ilimitado</span>
+                    </div>
+                    <div class="check">
+                        <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 2L5.65714 12.5L0 6.75801L1.45029 5.28598L5.65714 9.54549L14.5 0.5L16 2Z"
+                                fill="#0ADD91" />
+                        </svg>
+                        <span>Cursos novos com temas atuais todos os meses</span>
+                    </div>
+                    <div class="check">
+                        <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 2L5.65714 12.5L0 6.75801L1.45029 5.28598L5.65714 9.54549L14.5 0.5L16 2Z"
+                                fill="#0ADD91" />
+                        </svg>
+                        <span>+80% dos cursos pontuados no CRC</span>
+                    </div>
+                    <div class="check">
+                        <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 2L5.65714 12.5L0 6.75801L1.45029 5.28598L5.65714 9.54549L14.5 0.5L16 2Z"
+                                fill="#0ADD91" />
+                        </svg>
+                        <span>Especialistas IOB referências no mercado</span>
+                    </div>
+                    <div class="check">
+                        <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 2L5.65714 12.5L0 6.75801L1.45029 5.28598L5.65714 9.54549L14.5 0.5L16 2Z"
+                                fill="#0ADD91" />
+                        </svg>
+                        <span>Acesso aos cursos com transmissão ao vivo</span>
+                    </div>
+                </div>
+
+                <div class="cursos-destaques-link">
+                    <a href="https://api.whatsapp.com/send?phone=5511964868215&text=Ol%C3%A1!%20Quero%20conhecer%20a%20IOB%20Educa%C3%A7%C3%A3o%20Assinatura%20Completa!&utm_campaign=MKT%20Produto%20%7C%20Conte%C3%BAdo&utm_medium=email&_hsmi=2&_hsenc=p2ANqtz-9SekyD8h_2FIZbB3eympXlJ0rHEbC7Js9VPLwt9SXFPzyk8Tp-14ucxlZDlVgPjXVfz58W6XdjvpQZlUwGltGnHstMJTS2-68_W05dHWbPQr7ywew&utm_content=2&utm_source=hs_email"
+                        target="_blank" class="text-decoration-none btn btn-sm btn-iob btn-outline-pink mt-4">Saiba mais
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.01 11H4V13H16.01V16L20 12L16.01 8V11Z" fill="white" />
+                        </svg>
+                    </a>
+
+                    <button class="btn btn-iob btn-pink mt-4" data-toggle="modal"
+                        data-target="#assinaturaCompleta">Quero ser assinante &nbsp;
+                        <svg width="16" height="8" viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.01 3H0V5H12.01V8L16 4L12.01 0V3Z" fill="white" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal Assinatura completa -->
+            <div id="assinaturaCompleta" class="modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <!-- Aqui -->
+                        <div class="card-body" style="padding: 10px 40px">
+                            <script charset="utf-8" type="text/javascript"
+                                src="//js.hsforms.net/forms/embed/v2.js"></script>
+                            <script>
+                                hbspt.forms.create({
+                                    region: "na1",
+                                    portalId: "425682",
+                                    formId: "a1cf2bd7-db67-420d-8b0f-77123ec54200"
+                                });
+                            </script>
+                        </div>
+                        <!-- --->
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Assinatura completa -->
+
+        </div>
+
+        <div class="mini-banner-modulos item2 transisao-right" hidden>
+
+            <div class="mini-banner-modulos-img">
+                <img src="https://production-hypercube-headless-cms-strapi-site-files.s3.amazonaws.com/consultoria_ncm_6d61c9cc5b.png"
+                    alt="">
+            </div>
+
+            <div class="mini-banner-modulos-conteudo">
+                <h1 class="section-title">Assinatura Contábil</h1>
+                <div class="checks container">
+                    <div class="check">
+                        <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 2L5.65714 12.5L0 6.75801L1.45029 5.28598L5.65714 9.54549L14.5 0.5L16 2Z"
+                                fill="#0ADD91" />
+                        </svg>
+                        <span>+3000 videoaulas com acesso ilimitado</span>
+                    </div>
+                    <div class="check">
+                        <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 2L5.65714 12.5L0 6.75801L1.45029 5.28598L5.65714 9.54549L14.5 0.5L16 2Z"
+                                fill="#0ADD91" />
+                        </svg>
+                        <span>Cursos novos com temas atuais todos os meses</span>
+                    </div>
+                    <div class="check">
+                        <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 2L5.65714 12.5L0 6.75801L1.45029 5.28598L5.65714 9.54549L14.5 0.5L16 2Z"
+                                fill="#0ADD91" />
+                        </svg>
+                        <span>+80% dos cursos pontuados no CRC</span>
+                    </div>
+                    <div class="check">
+                        <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 2L5.65714 12.5L0 6.75801L1.45029 5.28598L5.65714 9.54549L14.5 0.5L16 2Z"
+                                fill="#0ADD91" />
+                        </svg>
+                        <span>Especialistas IOB referências no mercado</span>
+                    </div>
+                </div>
+
+                <div class="cursos-destaques-link">
+                    <a href="https://api.whatsapp.com/send?phone=5511964868215&text=Ol%C3%A1!%20Quero%20conhecer%20a%20IOB%20Educa%C3%A7%C3%A3o%20Assinatura%20Contábil!&utm_campaign=MKT%20Produto%20%7C%20Conte%C3%BAdo&utm_medium=email&_hsmi=2&_hsenc=p2ANqtz-9SekyD8h_2FIZbB3eympXlJ0rHEbC7Js9VPLwt9SXFPzyk8Tp-14ucxlZDlVgPjXVfz58W6XdjvpQZlUwGltGnHstMJTS2-68_W05dHWbPQr7ywew&utm_content=2&utm_source=hs_email"
+                        target="_blank" class="text-decoration-none btn btn-sm btn-iob btn-outline-pink mt-4">Saiba mais
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.01 11H4V13H16.01V16L20 12L16.01 8V11Z" fill="white" />
+                        </svg>
+                    </a>
+
+                    <button class="btn btn-iob btn-pink mt-4" data-toggle="modal"
+                        data-target="#assinaturaContabil">Quero ser assinante &nbsp;
+                        <svg width="16" height="8" viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.01 3H0V5H12.01V8L16 4L12.01 0V3Z" fill="white" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal Assinatura Contabil -->
+            <div id="assinaturaContabil" class="modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <!-- Aqui -->
+                        <div class="card-body" style="padding: 10px 40px">
+                            <script charset="utf-8" type="text/javascript"
+                                src="//js.hsforms.net/forms/embed/v2.js"></script>
+                            <script>
+                                hbspt.forms.create({
+                                    region: "na1",
+                                    portalId: "425682",
+                                    formId: "a1cf2bd7-db67-420d-8b0f-77123ec54200"
+                                });
+                            </script>
+                        </div>
+                        <!-- --->
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Assinatura Contabil -->
+
+        </div>
+
+        <div class="mini-banner-modulos item3 transisao-left" hidden>
+
+            <div class="mini-banner-modulos-img">
+                <img src="https://production-hypercube-headless-cms-strapi-site-files.s3.amazonaws.com/planejamento_tributario_c7d55a3a2c.png"
+                    alt="">
+            </div>
+
+            <div class="mini-banner-modulos-conteudo">
+                <h1 class="section-title">Assinatura Trabalhista</h1>
+                <div class="checks container">
+                    <div class="check">
+                        <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 2L5.65714 12.5L0 6.75801L1.45029 5.28598L5.65714 9.54549L14.5 0.5L16 2Z"
+                                fill="#0ADD91" />
+                        </svg>
+                        <span>+3000 videoaulas com acesso ilimitado</span>
+                    </div>
+                    <div class="check">
+                        <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 2L5.65714 12.5L0 6.75801L1.45029 5.28598L5.65714 9.54549L14.5 0.5L16 2Z"
+                                fill="#0ADD91" />
+                        </svg>
+                        <span>Cursos novos com temas atuais todos os meses</span>
+                    </div>
+                    <div class="check">
+                        <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 2L5.65714 12.5L0 6.75801L1.45029 5.28598L5.65714 9.54549L14.5 0.5L16 2Z"
+                                fill="#0ADD91" />
+                        </svg>
+                        <span>+80% dos cursos pontuados no CRC</span>
+                    </div>
+                </div>
+
+                <div class="cursos-destaques-link">
+                    <a href="https://api.whatsapp.com/send?phone=5511964868215&text=Ol%C3%A1!%20Quero%20conhecer%20a%20IOB%20Educa%C3%A7%C3%A3o%20Assinatura%20Trabalhista!&utm_campaign=MKT%20Produto%20%7C%20Conte%C3%BAdo&utm_medium=email&_hsmi=2&_hsenc=p2ANqtz-9SekyD8h_2FIZbB3eympXlJ0rHEbC7Js9VPLwt9SXFPzyk8Tp-14ucxlZDlVgPjXVfz58W6XdjvpQZlUwGltGnHstMJTS2-68_W05dHWbPQr7ywew&utm_content=2&utm_source=hs_email"
+                        target="_blank" class="text-decoration-none btn btn-sm btn-iob btn-outline-pink mt-4">Saiba mais
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.01 11H4V13H16.01V16L20 12L16.01 8V11Z" fill="white" />
+                        </svg>
+                    </a>
+
+                    <button class="btn btn-iob btn-pink mt-4" data-toggle="modal"
+                        data-target="#assinaturaTrabalhista">Quero ser assinante &nbsp;
+                        <svg width="16" height="8" viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.01 3H0V5H12.01V8L16 4L12.01 0V3Z" fill="white" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal Assinatura Trabalhista -->
+            <div id="assinaturaTrabalhista" class="modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <!-- Aqui -->
+                        <div class="card-body" style="padding: 10px 40px">
+                            <script charset="utf-8" type="text/javascript"
+                                src="//js.hsforms.net/forms/embed/v2.js"></script>
+                            <script>
+                                hbspt.forms.create({
+                                    region: "na1",
+                                    portalId: "425682",
+                                    formId: "a1cf2bd7-db67-420d-8b0f-77123ec54200"
+                                });
+                            </script>
+                        </div>
+                        <!-- --->
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Assinatura Trabalhista -->
+
+        </div>
+
+        <div class="mini-banner-modulos item4 transisao-left" hidden>
+
+            <div class="mini-banner-modulos-img">
+                <img src="https://production-hypercube-headless-cms-strapi-site-files.s3.amazonaws.com/consultoria_ncm_6d61c9cc5b.png"
+                    alt="">
+            </div>
+
+            <div class="mini-banner-modulos-conteudo">
+                <h1 class="section-title">Assinatura Tributária</h1>
+                <div class="checks container">
+                    <div class="check">
+                        <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 2L5.65714 12.5L0 6.75801L1.45029 5.28598L5.65714 9.54549L14.5 0.5L16 2Z"
+                                fill="#0ADD91" />
+                        </svg>
+                        <span>+3000 videoaulas com acesso ilimitado</span>
+                    </div>
+                    <div class="check">
+                        <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 2L5.65714 12.5L0 6.75801L1.45029 5.28598L5.65714 9.54549L14.5 0.5L16 2Z"
+                                fill="#0ADD91" />
+                        </svg>
+                        <span>Cursos novos com temas atuais todos os meses</span>
+                    </div>
+                </div>
+
+                <div class="cursos-destaques-link">
+                    <a href="https://api.whatsapp.com/send?phone=5511964868215&text=Ol%C3%A1!%20Quero%20conhecer%20a%20IOB%20Educa%C3%A7%C3%A3o%20Assinatura%20Tributária!&utm_campaign=MKT%20Produto%20%7C%20Conte%C3%BAdo&utm_medium=email&_hsmi=2&_hsenc=p2ANqtz-9SekyD8h_2FIZbB3eympXlJ0rHEbC7Js9VPLwt9SXFPzyk8Tp-14ucxlZDlVgPjXVfz58W6XdjvpQZlUwGltGnHstMJTS2-68_W05dHWbPQr7ywew&utm_content=2&utm_source=hs_email"
+                        target="_blank" class="text-decoration-none btn btn-sm btn-iob btn-outline-pink mt-4">Saiba mais
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.01 11H4V13H16.01V16L20 12L16.01 8V11Z" fill="white" />
+                        </svg>
+                    </a>
+
+                    <button class="btn btn-iob btn-pink mt-4" data-toggle="modal"
+                        data-target="#assinaturaTributaria">Quero ser assinante &nbsp;
+                        <svg width="16" height="8" viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.01 3H0V5H12.01V8L16 4L12.01 0V3Z" fill="white" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Assinatura Tributária -->
+        <div id="assinaturaTributaria" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <!-- Aqui -->
+                    <div class="card-body" style="padding: 10px 40px">
+                        <script charset="utf-8" type="text/javascript"
+                            src="//js.hsforms.net/forms/embed/v2.js"></script>
+                        <script>
+                            hbspt.forms.create({
+                                region: "na1",
+                                portalId: "425682",
+                                formId: "a1cf2bd7-db67-420d-8b0f-77123ec54200"
+                            });
+                        </script>
+                    </div>
+                    <!-- --->
+                </div>
+            </div>
+        </div>
+        <!-- Modal Assinatura Tributária -->
+
+
+    </div>
+
+</section>
+
+
+<section class="iob-space">
+    <div class="container text-center">
+        <h2 class="text-title">Confira alguns conteúdos para assinantes</h2>
+        <p class="text-subtitle">Infinidade de temas. Novidades constantes. Evolução contínua. Embarque na IOB Educação!
+        </p>
+    </div>
+</section>
+
+<!-- Apresentação card de cursos aqui -->
+<section class="iob-space">
+    <div class="container d-flex flex-wrap gap-4">
+    @foreach (var curso in Model)
+    {
+        <div class="card" style="width: 18rem;">
+            <img src="/@curso.Imagem" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title text-center">@curso.Nome</h5>
+                <h6 class="card-subtitle  mt-2 mb-3 text-center text-muted">@curso.Categoria</h6>
+                
+                <a href="assinaturas/curso/@curso.Id" class="btn btn-pink card-link">Curso</a>
+                <a href="#" class="btn btn-outline-pink card-link">+ Informações</a>
+            </div>
+        </div>
+    }
+    </div>
+</section>
+
+
+<div class="container carregarCursos">
+    <button class="btn btn-outline-pink btn-iob">Conheça mais cursos &nbsp;
+        <svg class="" width="11" height="5" viewBox="0 0 11 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0.5 0L5.5 5L10.5 0H0.5Z" fill="#FF005A" />
+        </svg>
+    </button>
+</div>
+
+<section class="iob-space text-center">
+    <p class="iob-text">Para conferir o catálogo completo de cursos <a class="iob-text-link" href="#"
+            class="link-item">clique aqui</a>.</p>
+</section>
+
+
+
+<script>
+    document.querySelectorAll(".bbt-nav").forEach((btn, index) => {
+        // btn.classList.add("active");
+        btn.addEventListener("click", () => {
+            LispaActive();
+            btn.classList.add("active");
+            Listamodulos(index);
+            console.log(index);
+        });
+    });
+
+    function LispaActive() {
+        document.querySelectorAll(".bbt-nav").forEach((btn) => {
+            btn.classList.remove("active");
+        });
+    }
+
+    function Listamodulos(index) {
+        switch (index) {
+            case 0:
+                document.querySelector(".item1").removeAttribute("hidden");
+                document.querySelector(".item2").setAttribute("hidden", "");
+                document.querySelector(".item3").setAttribute("hidden", "");
+                document.querySelector(".item4").setAttribute("hidden", "");
+                break;
+            case 1:
+                document.querySelector(".item1").setAttribute("hidden", "");
+                document.querySelector(".item2").removeAttribute("hidden");
+                document.querySelector(".item3").setAttribute("hidden", "");
+                document.querySelector(".item4").setAttribute("hidden", "");
+                break;
+            case 2:
+                document.querySelector(".item1").setAttribute("hidden", "");
+                document.querySelector(".item2").setAttribute("hidden", "");
+                document.querySelector(".item3").removeAttribute("hidden");
+                document.querySelector(".item4").setAttribute("hidden", "");
+                break;
+            case 3:
+                document.querySelector(".item1").setAttribute("hidden", "");
+                document.querySelector(".item2").setAttribute("hidden", "");
+                document.querySelector(".item3").setAttribute("hidden", "");
+                document.querySelector(".item4").removeAttribute("hidden");
+                break;
+        }
+    }
+</script>

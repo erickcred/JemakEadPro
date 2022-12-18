@@ -1,0 +1,6 @@
+@model IEnumerable<JemakEadPro.Models.Curso>
+
+@foreach (var curso in Model)
+{
+    <li><a href="/portal/curso/@curso.Id">@curso.Nome</a></li>
+}

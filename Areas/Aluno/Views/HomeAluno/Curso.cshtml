@@ -1,0 +1,164 @@
+@model JemakEadPro.Models.Curso
+
+
+<div class="mt-5 container">
+    <h1>@Model.Nome</h1>
+    <div class="d-flex justify-content-between">
+        <div class="col-xs-4 col-md-4" id="player"></div>
+        <div class="col-xs-3 col-md-3 pull-right">
+            <div id='list' class="list-group">
+                @foreach (var video in Model.Videos)
+                {
+                    <a href="#" class="samba-playlist-trigger list-group-item"
+                        data-mediaid="@video.VideoId">@video.Nome</a>
+                }
+            </div>
+        </div>
+    </div>
+
+
+    <p class="statuslisten"></p>
+
+    <p class="event">onPause</p>
+    <p>Inicio Player: <span class="value"></span></p>
+
+    <p class="eventlisten">asdf</p>
+    <p>Progresso: <span class="valuelisten"></span></p>
+
+    <p>Midia View: <span class="onMediaView"></span></p>
+    <p>Midia View: <span onMediaView="onMediaViews()"></span></p>
+</div>
+
+<script type="text/javascript" samba-player-api="player"
+    src="https://player.sambatech.com.br/v3/samba.player.api.js"></script>
+
+<script type="text/javascript">// <![CDATA[
+    var statusListenTd = document.querySelector('.statuslisten');
+
+    var eventTd = document.querySelector('.event');
+    var valueTd = document.querySelector('.value');
+
+    var eventListenTd = document.querySelector('.eventlisten');
+    var valueListenTd = document.querySelector('.valuelisten');
+
+    var mediaView = document.querySelector('.onMediaView');
+
+    var numMediaObj = 1;
+
+    function eventListener(player) {
+        if (player.event != 'onListen') {
+            mediaView.textContent = player.events;
+            valueTd.textContent = "";
+            eventTd.textContent = player.event;
+            if (player.eventParam) {
+                if (typeof player.eventParam === 'object') {
+                    valueTd.textContent = JSON.stringify(player.eventParam);
+                } else {
+                    valueTd.textContent = player.eventParam;
+                }
+            }
+
+        } else if (player.event == 'onListen') {
+            valueListenTd.textContent = "";
+            eventListenTd.textContent = player.event;
+            valueListenTd.textContent = player.eventParam;
+        }
+
+        if (player.event == "onStart" || player.event == "onFinish") {
+            statusListenTd.textContent = player.event;
+        }
+    }
+
+    function onClick(mediaId, evt) {
+        if (evt.isTrusted && player.sequence) {
+            numMediaObj = findMediaPosition(playlistObj.medias, 'id', mediaId) + 1
+        }
+        document.getElementsByClassName('samba-playlist-trigger list-group-item active')[0].className = 'samba-playlist-trigger list-group-item';
+        evt.target.className = "samba-playlist-trigger list-group-item active";
+    }
+
+    function onLoad(event) {
+        if (player.autoplay) {
+            if (numMediaObj <= playlistObj.medias.length) {
+                player.play();
+                numMediaObj++;
+            } else {
+                numMidiaObj = 1
+            }
+        }
+    }
+
+    function findMediaPosition(array, key, value) {
+        for (var i = 0; i < array.length; i++) {
+            if (array[i][key] === value) {
+                return i;
+            }
+        }
+        return null;
+    }
+    // ]]></script>
+
+
+
+<script id="playlist" type="text/javascript">
+    
+    let mediaIdHTML = document.querySelectorAll(".list-group-item");
+    mediaIdHTML[0].classList.add("active");
+    let mediasId = new Array();
+    let titles = new Array();
+
+    let obj = new Object();
+    let ids = new Array();
+
+    
+
+    mediaIdHTML.forEach(media => {
+        mediasId.push(media.attributes.getNamedItem("data-mediaid").nodeValue);
+        titles.push(media.textContent);
+
+        obj = {
+            id: media.attributes.getNamedItem("data-mediaid").nodeValue,
+            title: media.textContent
+        }
+        
+        ids.push(obj);
+    });
+
+
+    var playlistObj = {
+        titles: [titles],
+        ph: '@Model.ProjetoPlayerKey', //'d18ce316ffcde2be46306309dfe68155',// Projeto Id
+        medias: ids
+        @* [
+
+            { id: "@video.VideoId", title: "@video.Nome" }] *@
+            ,
+        onClick: 'onClick',
+        loop: true,
+        timeout: 1,
+        autoplay: true,
+        sequence: true,
+    };
+</script>
+
+
+
+
+<script type="text/javascript">
+    var player = new SambaPlayer("player", {
+        // height: 270,
+        // width: 480,
+        height: 360,
+        width: 640,
+        playlist: playlistObj,
+        playerParams: {
+            volume: 25,
+            startOutput: '480p',
+            html5: true
+        },
+        events: {
+            "*": "eventListener",
+            "onLoad": "onLoad",
+        }
+    });
+ </script>

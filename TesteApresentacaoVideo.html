@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
+
+    <div class="mt-5 container">
+        <div class="d-flex justify-content-between">
+            <div class="col-xs-4 col-md-4" id="player"></div>
+            <div class="col-xs-3 col-md-3 pull-right">
+                <div id='list' class="list-group">
+                    <a href="#" class="samba-playlist-trigger list-group-item active" data-mediaid="4eecc0b56e3d4590e6dfa50656b81214">BlocoApresentao</a>
+
+                    <a href="#" class="samba-playlist-trigger list-group-item" data-mediaid="200d58e376327a3cc0c1e1fadf269c1b">modulo_4</a>
+                    <a href="#" class="samba-playlist-trigger list-group-item" data-mediaid="aec442dded53aea0a9f759f965244dbd">modulo_3</a>
+                </div>
+            </div>
+        </div>
+
+
+        <p class="statuslisten"></p>
+
+        <p class="event">onPause</p>
+        <p>Inicio Player: <span class="value"></span></p>
+
+        <p class="eventlisten">asdf</p>
+        <p>Progresso: <span class="valuelisten"></span></p>
+
+        <p>Midia View: <span class="onMediaView"></span></p>
+        <p>Midia View: <span onMediaView="onMediaViews()"></span></p>
+    </div>
+    
+    <script type="text/javascript" samba-player-api="player" src="https://player.sambatech.com.br/v3/samba.player.api.js"></script>
+    
+    <script type="text/javascript">// <![CDATA[
+        var statusListenTd = document.querySelector('.statuslisten');
+        
+        var eventTd = document.querySelector('.event');
+        var valueTd = document.querySelector('.value');
+        
+        var eventListenTd = document.querySelector('.eventlisten');
+        var valueListenTd = document.querySelector('.valuelisten');
+
+        var mediaView = document.querySelector('.onMediaView');
+        
+        var numMediaObj = 1;
+    
+        function eventListener(player){
+            if(player.event != 'onListen') {
+                mediaView.textContent = player.events;
+                valueTd.textContent = "";
+                eventTd.textContent = player.event;
+                if(player.eventParam) {
+                    if(typeof player.eventParam === 'object') {
+                        valueTd.textContent = JSON.stringify(player.eventParam);
+                    }else {
+                        valueTd.textContent = player.eventParam;
+                    }
+                }
+        
+            }else if(player.event == 'onListen'){
+                valueListenTd.textContent = "";
+                eventListenTd.textContent = player.event;
+                valueListenTd.textContent = player.eventParam;
+            }
+
+            if(player.event == "onStart" || player.event == "onFinish") {
+                statusListenTd.textContent = player.event;
+            }
+        }
+    
+        function onClick(mediaId, evt){
+            if (evt.isTrusted && player.sequence) {
+                numMediaObj = findMediaPosition(playlistObj.medias, 'id', mediaId) + 1
+            }
+            document.getElementsByClassName('samba-playlist-trigger list-group-item active')[0].className = 'samba-playlist-trigger list-group-item';
+            evt.target.className = "samba-playlist-trigger list-group-item active";
+        }
+    
+      function onLoad(event) {
+        if(player.autoplay) {
+          if(numMediaObj <= playlistObj.medias.length) {
+            player.play();
+            numMediaObj++;
+          } else {
+            numMidiaObj = 1
+          }
+        }
+      }
+    
+      function findMediaPosition(array, key, value) {
+        for (var i = 0; i < array.length; i++) {
+            if (array[i][key] === value) {
+                return i;
+            }
+        }
+      return null;
+      }
+    // ]]></script>
+    
+    <script id="playlist" type="text/javascript">// <![CDATA[
+        var playlistObj = {
+            titles: ['BlocoApresentao', 'modulo_4', 'modulo_3'],
+            ph: '2c0b9cd18ca926982dc0fbf8b9903faa', //'d18ce316ffcde2be46306309dfe68155',// Projeto Id
+            medias: [
+                {id:'827be54ab95b57bf4d3ffcae2a66de48', title: 'BlocoApresentao'}, // Id Midia
+                {id:'200d58e376327a3cc0c1e1fadf269c1b', title: 'modulo_4'},
+                {id:'aec442dded53aea0a9f759f965244dbd', title: 'modulo_3'}
+            ],
+            onClick: 'onClick',
+            loop: true,
+            timeout: 1,
+            autoplay: true,
+            sequence: true,
+        };
+
+    // ]]></script>
+    
+    <script type="text/javascript">// <![CDATA[
+        var player = new SambaPlayer("player", {
+            // height: 270,
+            // width: 480,
+            height: 360,
+            width: 640,
+            playlist: playlistObj,
+            playerParams: {
+                volume: 25,
+                startOutput: '480p',
+                html5: true
+            },
+            events: {
+                "*": "eventListener",
+                "onLoad": "onLoad",
+            }
+        });
+    // ]]></script>
+    
+
+      <video width="250" src="http://pvbps-sambavideos.akamaized.net/account/3620/112/2022-01-13/video/a26813bff199cb1178a4031e7f1a09fd/a26813bff199cb1178a4031e7f1a09fd_480p.mp4"></video>
+
+
+
+
+    <iframe src="http://pvbps-sambavideos.akamaized.net/account/3620/112/2022-01-13/video/a26813bff199cb1178a4031e7f1a09fd/a26813bff199cb1178a4031e7f1a09fd_480p.mp4" title="description"  width="300" height="200"></iframe>
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<script type="text/javascript">
+    var eventTd = document.getElementsByClassName('event')[0];
+    var valueTd = document.getElementsByClassName('value')[0];
+    var eventListenTd = document.getElementsByClassName('eventlisten')[0];
+    var valueListenTd = document.getElementsByClassName('valuelisten')[0];
+    var buttonDiv = document.getElementsByClassName('btn-group')[0];
+    var statusListenTd = document.getElementsByClassName('statuslisten')[0];
+  
+  
+    function eventListener(player) {
+      if(player.event != 'onListen') {
+        valueTd.innerHTML = "";
+        eventTd.innerHTML = player.event;
+        if(player.eventParam) {
+          if(typeof player.eventParam === 'object') {
+            valueTd.innerHTML = JSON.stringify(player.eventParam);
+          }else {
+            valueTd.innerHTML = player.eventParam;
+          }
+  
+        }
+  
+        if(player.event == 'onResizeActive') {
+          document.getElementById('right-container').className ="col-md-3 pull-right";
+          document.getElementsByName("cd023ef9950652a81d2c42747b3b960e")[0].width = 640 + 200;
+        }else if(player.event == 'onResizeDeactive'){
+          document.getElementById('right-container').className ="col-md-5 pull-right";
+          document.getElementsByName("cd023ef9950652a81d2c42747b3b960e")[0].width = 640;
+        }
+      }else if(player.event == 'onListen'){
+        valueListenTd.innerHTML = "";
+        eventListenTd.innerHTML = player.event;
+        valueListenTd.innerHTML = player.eventParam;
+      }
+  
+      if(player.event == "onStart" || player.event == "onFinish") {
+        statusListenTd.innerHTML = player.event;
+      }
+    }
+  
+    //Bind no botão
+    var muted = false;
+    buttonDiv.addEventListener('click', function(evt){
+      var fnstring = "";
+      switch(evt.target.id) {
+      case 'play':
+        fnstring = "player.play()";
+        player.play();
+        break;
+      case 'pause':
+        fnstring = "player.pause()";
+        player.pause();
+        break;
+      case 'seek':
+        fnstring = "player.seek(20)";
+        player.seek(20);
+        break;
+      case 'status':
+        fnstring = "player.getStatus(callback)";
+              player.getStatus(function(media){
+                  var value = "";
+                  for(var key in media.status) {
+            var val = (typeof media.status[key] !== 'number') ? media.status[key]: media.status[key].toFixed(2);
+                      value += "<tr><td>" + key + "</td><td>" + val + "</td></tr>";
+                  }
+          document.getElementById("tbody").innerHTML = value;
+              });
+        break;
+      case 'volume':
+        fnstring = "player.setVolume(20)";
+        player.setVolume(20);
+        break;
+      case 'mute':
+        if(!muted) {
+          muted = true;
+          evt.target.querySelector('span').classList.remove('glyphicon-volume-off');
+          evt.target.querySelector('span').classList.add('glyphicon-volume-up');
+          fnstring = "player.mute()";
+          player.mute();
+        }else {
+          muted = false;
+          evt.target.querySelector('span').classList.remove('glyphicon-volume-up');
+          evt.target.querySelector('span').classList.add('glyphicon-volume-off');
+          fnstring = "player.unmute()";
+          player.unmute();
+  
+        }
+        break;
+      }
+      document.getElementById('function').innerHTML = fnstring;
+      evt.preventDefault();
+    }, false);
+  
+    var playerConfig = {
+        height: 360,
+        width: 640,
+        ph: "67490c1445c946bd1350f07dca0ec47a",
+        m: "9c91940c22cfb93549a161fb8d645722",
+        events: {
+          "*": "eventListener"
+        },
+        playerParams: {
+          wideScreen: true
+        }
+    };
+    var player = new SambaPlayer("player", playerConfig);
+    eventListener(player)
+
+</script> -->
