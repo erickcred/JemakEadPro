@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JemakEadPro.Migrations
 {
     [DbContext(typeof(JemakEadProContext))]
-    [Migration("20221216180349_UsuarioImagem")]
-    partial class UsuarioImagem
+    [Migration("20221220124950_CriandoDb")]
+    partial class CriandoDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -328,7 +328,7 @@ namespace JemakEadPro.Migrations
 
                     b.Property<string>("ResponsavelTelefone")
                         .HasColumnName("ResponsavelTelefone")
-                        .HasColumnType("VARCHAR(12)");
+                        .HasColumnType("VARCHAR(13)");
 
                     b.Property<string>("Senha")
                         .HasColumnName("Senha")
@@ -345,6 +345,11 @@ namespace JemakEadPro.Migrations
                     b.Property<string>("TelefoneTrabalho")
                         .HasColumnName("TelefoneTrabalho")
                         .HasColumnType("VARCHAR(13)");
+
+                    b.Property<string>("TipoUsuario")
+                        .IsRequired()
+                        .HasColumnName("TipoUsuario")
+                        .HasColumnType("VARCHAR(50)");
 
                     b.HasKey("Id");
 

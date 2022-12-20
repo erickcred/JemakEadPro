@@ -23,7 +23,8 @@ namespace JemakEadPro
             services.AddControllersWithViews();
 
             services.AddDbContext<JemakEadProContext>(
-                options => options.UseMySql("Data Source=localhost;Database=jemakeadpro;Uid=root;Pwd=root")
+                //options => options.UseMySql("Data Source=localhost;Database=jemakeadpro;Uid=root;Pwd=root")
+                options => options.UseMySql("Data Source=a2nlmysql29plsk.secureserver.net;Database=jemak;Uid=erickcred;Pwd=Jessica12@")
             );
 
 
