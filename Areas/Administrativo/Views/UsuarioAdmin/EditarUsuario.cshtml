@@ -1,3 +1,4 @@
+@using JemakEadPro.Models.Enums.Usuario;
 @model JemakEadPro.Models.Usuario
 
 
@@ -65,7 +66,28 @@
                 <input class="form-control" type="text" name="CarteiraProfissional" value="@Model.CarteiraProfissional">
             </div>
 
+            @Model.TipoUsuario
             <div class="col">
+                <label for="TipoUsuario">Tipo Usuario</label>
+                <select name="TipoUsuario" class="form-control">
+                    <option value="@Model.TipoUsuario">@Model.TipoUsuario</option>
+                    @if (ETipoUsuario.Administrador == Model.TipoUsuario)
+                    {
+                        <option value="@ETipoUsuario.Aluno">@ETipoUsuario.Aluno</option>
+                        <option value="@ETipoUsuario.Professor">@ETipoUsuario.Professor</option>
+                    } else if (ETipoUsuario.Aluno == Model.TipoUsuario)
+                    {
+                        <option value="@ETipoUsuario.Administrador">@ETipoUsuario.Administrador</option>
+                        <option value="@ETipoUsuario.Professor">@ETipoUsuario.Professor</option>
+                    } else
+                    {
+                        <option value="@ETipoUsuario.Administrador">@ETipoUsuario.Administrador</option>
+                        <option value="@ETipoUsuario.Aluno">@ETipoUsuario.Aluno</option>
+                    }
+                </select>
+            </div>
+
+            <div class="col-12">
                 <label for="file">Imagem: </label>
                 <input class="form-control" type="file" name="file">
             </div>

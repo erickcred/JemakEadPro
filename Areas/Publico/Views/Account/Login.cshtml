@@ -1,6 +1,9 @@
+@model JemakEadPro.ViewModels.LoginViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
-    Layout = null;
+    Layout = "";
 }
+
 
 
 <!doctype html>
@@ -42,17 +45,21 @@
 <body class="text-center">
 
     <main class="form-signin">
-        <form>
+        <form action="/login/valida-login" method="post">
             <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
             <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+            
+            <br />
 
             <div class="form-floating">
-                <input type="email" class="form-control" name="Email" placeholder="name@example.com">
+                <input type="email" class="form-control" asp-for="Email" placeholder="name@example.com">
                 <label for="Email">E-mail</label>
+                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" name="Senha" placeholder="Password">
+                <input type="password" class="form-control" asp-for="Senha" placeholder="Password">
                 <label for="Senha">Senha</label>
+                <span asp-validation-for="Senha" class="text-danger"></span>
             </div>
 
             <div class="checkbox mb-3">

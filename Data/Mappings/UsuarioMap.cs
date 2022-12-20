@@ -82,6 +82,11 @@ namespace JemakEadPro.Data.Mappings
                 .HasColumnName("Imagem")
                 .HasColumnType("VARCHAR(255)");
 
+            builder.Property(x => x.TipoUsuario)
+                .IsRequired()
+                .HasColumnName("TipoUsuario")
+                .HasColumnType("VARCHAR(50)");
+
             builder.Property(x => x.Ativo)
                 .HasColumnName("Ativo")
                 .HasColumnType("BOOL")
@@ -137,7 +142,7 @@ namespace JemakEadPro.Data.Mappings
             builder.Property(x => x.ResponsavelTelefone)
                 .IsRequired(false)
                 .HasColumnName("ResponsavelTelefone")
-                .HasColumnType("VARCHAR(12)");
+                .HasColumnType("VARCHAR(13)");
 
 
 

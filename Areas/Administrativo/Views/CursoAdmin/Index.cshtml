@@ -23,6 +23,8 @@
                 <th>#</th>
                 <th>Status</th>
                 <th>Curso</th>
+                <th>Tipo Curso</th>
+                <th>Situação</th>
                 <th>Imagem</th>
                 <th>Professor</th>
                 <th>Categoria</th>
@@ -78,6 +80,8 @@
                     <th class="text-danger">Inativo</th>
                 }
                 <td>@curso.Nome</td>
+                <td>@Html.DisplayName(Convert.ToString(curso.TipoCurso))</td>
+                <td>@curso.Situacao</td>
                 <td>
                     <img class="imagem-curso" src="/@curso.Imagem" alt="@curso.Nome">
                 </td>

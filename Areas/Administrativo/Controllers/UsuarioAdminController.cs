@@ -79,6 +79,7 @@ namespace JemakEadPro.Areas.Administrativo.Controllers
             usuario.Sexo = model.Sexo;
             usuario.DataNascimento = model.DataNascimento;
             usuario.CarteiraProfissional = model.CarteiraProfissional;
+            usuario.TipoUsuario = model.TipoUsuario;
             // usuario.Senha = model.Senha;
             // usuario.Perfil = model.Perfil;
             // usuario.DataCadastro = model.DataCadastro;

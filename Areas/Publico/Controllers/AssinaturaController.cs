@@ -1,11 +1,13 @@
 using System.Linq;
 using System.Threading.Tasks;
 using JemakEadPro.Data;
+using JemakEadPro.Models.Enums.Curso;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace JemakEadPro.Controllers
+namespace JemakEadPro.Areas.Publico.Controllers
 {
+    [Area("Publico")]
     [Controller]
     [Route("/assinaturas/")]
     public class AssinaturaController : Controller
@@ -18,7 +20,12 @@ namespace JemakEadPro.Controllers
         [HttpGet("")]
         public async Task<IActionResult> Index()
         {
-            var cursos = await _context.Cursos.AsNoTracking().Where(x => x.Situacao == "Liberado").ToListAsync();
+            var cursos = await _context.Cursos
+                        .AsNoTracking()
+                        .Where(
+                            x => x.Situacao == "Liberado" &&
+                            x.TipoCurso == ETipoCurso.AssinaturaIed)
+                        .ToListAsync();
             return View("Index", cursos);
         }
 

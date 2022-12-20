@@ -466,23 +466,7 @@
 </section>
 
 <!-- Apresentação card de cursos aqui -->
-<section class="iob-space">
-    <div class="container d-flex flex-wrap gap-4">
-    @foreach (var curso in Model)
-    {
-        <div class="card" style="width: 18rem;">
-            <img src="/@curso.Imagem" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title text-center">@curso.Nome</h5>
-                <h6 class="card-subtitle  mt-2 mb-3 text-center text-muted">@curso.Categoria</h6>
-                
-                <a href="assinaturas/curso/@curso.Id" class="btn btn-pink card-link">Curso</a>
-                <a href="#" class="btn btn-outline-pink card-link">+ Informações</a>
-            </div>
-        </div>
-    }
-    </div>
-</section>
+@Html.Partial("_ApresentacaoCursos");
 
 
 <div class="container carregarCursos">

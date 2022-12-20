@@ -1,3 +1,4 @@
+using JemakEadPro.Models.Enums.Usuario;
 using System;
 using System.Collections.Generic;
 
@@ -28,6 +29,7 @@ namespace JemakEadPro.Models
         public string Perfil { get; set; }
         public DateTime DataCadastro { get; set; }
         public string Imagem { get; set; }
+        public ETipoUsuario TipoUsuario { get; set; }
         public bool? Ativo { get; set; }
 
         public string CEP { get; set; }

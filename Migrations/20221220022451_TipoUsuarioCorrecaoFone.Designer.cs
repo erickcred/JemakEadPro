@@ -3,14 +3,16 @@ using System;
 using JemakEadPro.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JemakEadPro.Migrations
 {
     [DbContext(typeof(JemakEadProContext))]
-    partial class JemakEadProContextModelSnapshot : ModelSnapshot
+    [Migration("20221220022451_TipoUsuarioCorrecaoFone")]
+    partial class TipoUsuarioCorrecaoFone
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -326,7 +328,7 @@ namespace JemakEadPro.Migrations
 
                     b.Property<string>("ResponsavelTelefone")
                         .HasColumnName("ResponsavelTelefone")
-                        .HasColumnType("VARCHAR(13)");
+                        .HasColumnType("VARCHAR(12)");
 
                     b.Property<string>("Senha")
                         .HasColumnName("Senha")
@@ -344,10 +346,8 @@ namespace JemakEadPro.Migrations
                         .HasColumnName("TelefoneTrabalho")
                         .HasColumnType("VARCHAR(13)");
 
-                    b.Property<string>("TipoUsuario")
-                        .IsRequired()
-                        .HasColumnName("TipoUsuario")
-                        .HasColumnType("VARCHAR(50)");
+                    b.Property<int>("TipoUsuario")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

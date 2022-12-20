@@ -1,16 +1,15 @@
-using System.Threading.Tasks;
 using JemakEadPro.Data;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
-namespace JemakEadPro.Controllers
+namespace JemakEadPro.Areas.Publico.Controllers
 {
+    [Area("Publico")]
     [Controller]
-    [Route("/curta-duracao/")]
-    public class CurtaDuracaoController : Controller
+    [Route("/in-company")]
+    public class InCompanyController : Controller
     {
         JemakEadProContext _context;
-        public CurtaDuracaoController(JemakEadProContext context)
+        public InCompanyController(JemakEadProContext context)
             => _context = context;
 
 

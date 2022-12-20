@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using JemakEadPro.Data;
+using JemakEadPro.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -14,20 +17,46 @@ namespace JemakEadPro
 {
     public class Startup
     {
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
             services.AddControllersWithViews();
 
-
             services.AddDbContext<JemakEadProContext>(
                 options => options.UseMySql("Data Source=localhost;Database=jemakeadpro;Uid=root;Pwd=root")
             );
+
+
+            // services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            // services.AddMemoryCache();
+            // services.AddSession();
+
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, option =>
+                {
+                    option.Cookie.Name = "Usuario";
+                    option.LoginPath = new PathString("/login");
+                });
+
+            services.AddAuthorization(option =>
+            {
+                option.AddPolicy("Administrador", policy => policy.RequireRole("Administrador"));
+                option.AddPolicy("Aluno", policy => policy.RequireRole("Aluno"));
+            });
+
+
+            // services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            // {
+                // options.Password.RequireDigit = false;
+                // options.Password.RequiredLength = 6;
+                // options.Password.RequireNonAlphanumeric = false;
+                // options.Password.RequireUppercase = false;
+                
+            // });
+                // .AddDefaultTokenProviders();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -38,6 +67,12 @@ namespace JemakEadPro
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
+            // app.UseSession();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+
 
             app.UseEndpoints(endpoints =>
             {

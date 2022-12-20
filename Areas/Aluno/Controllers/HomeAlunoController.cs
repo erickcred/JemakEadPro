@@ -1,11 +1,16 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using JemakEadPro.Data;
+using JemakEadPro.Models.Enums.Usuario;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace JemakEadpro.Areas.Aluno.Controllers
+namespace JemakEadPro.Areas.Aluno.Controllers
 {
+    [Authorize(Policy = "Aluno")]
     [Area("Aluno")]
     [Controller]
     [Route("/portal/")]

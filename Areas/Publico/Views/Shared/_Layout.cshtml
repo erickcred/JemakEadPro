@@ -42,10 +42,20 @@
                     </div>
                 </div>
 
-                <ul class="nav">
-                    <li class="nav-item"><a href="#" class="nav-link text-white  px-2">Login</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link text-white  px-2">Sign up</a></li>
-                </ul>
+                
+                @if (User.Identity.Name != null)
+                {
+                    <ul id="usuario-logado" class="nav">
+                        <li class="nav-item"><span class="nav-link text-secondary px-2">Olá @User.Identity.Name</span></li>
+                        <li class="nav-item"><a href="/portal" class="nav-link text-white  px-2">Acessar Portal</a></li>
+                        <li class="nav-item"><a href="/sair" class="nav-link text-pink px-2">Sair</a></li>
+                    </ul>
+                } else
+                {
+                    <ul id="usuario-deslogado" class="nav">
+                        <li class="nav-item"><a href="/login" class="nav-link text-white  px-2">Login</a></li>
+                    </ul>
+                }
 
             </div>
         </nav>
@@ -343,7 +353,8 @@
                 });
             }
         }
-        TestimonialsScroll()
+        TestimonialsScroll();
+        
     </script>
 </body>
 

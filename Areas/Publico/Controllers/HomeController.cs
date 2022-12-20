@@ -9,8 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace JemakEadPro.Controllers
+namespace JemakEadPro.Areas.Publico.Controllers
 {
+    [Area("Publico")]
     [Controller]
     [Route("/")]
     public class HomeController : Controller
