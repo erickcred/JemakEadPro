@@ -72,4 +72,4 @@ document.addEventListener("scroll", function() {
 
 
 /* Muda none do input de pesquisa mobile*/
-document.querySelector("#search-mobile").placeholder = "Pesquisar";
+//document.querySelector("#search-mobile").placeholder = "Pesquisar";

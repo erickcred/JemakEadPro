@@ -11,6 +11,8 @@ namespace JemakEadPro.Models
             Senha = CPF;
             Ativo = true;
             DataCadastro = DateTime.Now;
+            Senha = "123";
+            TipoUsuario = ETipoUsuario.Aluno;
             Andamentos = new List<Andamento>();
         }
 
