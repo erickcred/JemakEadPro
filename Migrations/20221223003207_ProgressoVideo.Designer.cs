@@ -3,14 +3,16 @@ using System;
 using JemakEadPro.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JemakEadPro.Migrations
 {
     [DbContext(typeof(JemakEadProContext))]
-    partial class JemakEadProContextModelSnapshot : ModelSnapshot
+    [Migration("20221223003207_ProgressoVideo")]
+    partial class ProgressoVideo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

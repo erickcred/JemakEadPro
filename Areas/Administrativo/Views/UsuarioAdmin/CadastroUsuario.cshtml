@@ -1,4 +1,5 @@
 @model JemakEadPro.Models.Usuario
+@using JemakEadPro.Models.Enums.Usuario
 
 
 
@@ -47,7 +48,10 @@
 
             <div class="col">
                 <label for="Sexo">Sexo: </label>
-                <input class="form-control" type="text" name="Sexo" placeholder="Sexo">
+                <select name="Sexo" class="form-control">
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                </select>
             </div>
         </div>
 
@@ -63,6 +67,15 @@
             </div>
 
             <div class="col">
+                <label for="TipoUsuario">Tipo Usuario</label>
+                <select name="TipoUsuario" class="form-control">
+                    <option value="@ETipoUsuario.Aluno">@ETipoUsuario.Aluno</option>
+                    <option value="@ETipoUsuario.Professor">@ETipoUsuario.Professor</option>
+                    <option value="@ETipoUsuario.Administrador">@ETipoUsuario.Administrador</option>
+                </select>
+            </div>
+
+            <div class="col-12">
                 <label for="file">Imagem: </label>
                 <input class="form-control" type="file" name="file">
             </div>

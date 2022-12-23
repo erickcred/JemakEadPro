@@ -9,6 +9,8 @@ namespace JemakEadPro.Models
         public string Url { get; set; }
         public int Ordem { get; set; }
         public string Duracao { get; set; }
+        public string Progresso { get; set; }
+        public bool Finalizado { get; set; }
 
         public Curso Curso { get; set; }
     }

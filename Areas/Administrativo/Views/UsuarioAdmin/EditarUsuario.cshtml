@@ -51,7 +51,16 @@
 
             <div class="col">
                 <label for="Sexo">Sexo: </label>
-                <input class="form-control" type="text" name="Sexo" value="@Model.Sexo">
+                <select name="Sexo" class="form-control">
+                    <option value="@Model.Sexo">@Model.Sexo</option>
+                    @if (Model.Sexo == "Masculino")
+                    {
+                        <option value="Feminino">Feminino</option>
+                    } else
+                    {
+                        <option value="Masculino">Masculino</option>
+                    }
+                </select>
             </div>
         </div>
 
@@ -66,7 +75,6 @@
                 <input class="form-control" type="text" name="CarteiraProfissional" value="@Model.CarteiraProfissional">
             </div>
 
-            @Model.TipoUsuario
             <div class="col">
                 <label for="TipoUsuario">Tipo Usuario</label>
                 <select name="TipoUsuario" class="form-control">

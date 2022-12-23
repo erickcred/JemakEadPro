@@ -41,6 +41,16 @@ namespace JemakEadPro.Data.Mappings
                 .HasColumnName("Duracao")
                 .HasColumnType("VARCHAR(100)");
 
+            builder.Property(x => x.Progresso)
+                .IsRequired(false)
+                .HasColumnName("Progresso")
+                .HasColumnType("VARCHAR(3)");
+
+            builder.Property(x => x.Finalizado)
+                .HasColumnName("Finalizado")
+                .HasColumnType("BOOL")
+                .HasDefaultValue(false);
+
             
             builder.HasOne(x => x.Curso)
                 .WithMany(x => x.Videos)
