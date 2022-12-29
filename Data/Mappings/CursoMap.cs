@@ -50,15 +50,16 @@ namespace JemakEadPro.Data.Mappings
                 .HasColumnName("Categoria")
                 .HasColumnType("VARCHAR(100)");
 
+            builder.Property(x => x.CargaHoraria)
+                .HasColumnName("CargaHoraria")
+                .HasColumnType("INT(10)");
+
             builder.Property(x => x.TipoCurso)
                 .IsRequired()
                 .HasColumnName("TipoCurso")
                 .HasColumnType("VARCHAR(50)");
 
 
-            builder.Property(x => x.CargaHoraria)
-                .HasColumnName("CargaHoraria")
-                .HasColumnType("INT(10)");
 
             builder.Property(x => x.Ativo)
                 .HasColumnName("Ativo")
@@ -70,6 +71,8 @@ namespace JemakEadPro.Data.Mappings
                 .IsRequired(false)
                 .HasConstraintName("FK_Curso_Contrato")
                 .OnDelete(DeleteBehavior.NoAction);
+
+                
 
             builder.Property(x => x.Descricao)
                 .IsRequired(false)

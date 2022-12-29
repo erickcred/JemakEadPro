@@ -9,14 +9,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JemakEadPro.Migrations
 {
     [DbContext(typeof(JemakEadProContext))]
-    [Migration("20221224122058_IncioVideo")]
-    partial class IncioVideo
+    [Migration("20221229160808_VideoProgresso")]
+    partial class VideoProgresso
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.31")
+                .HasAnnotation("ProductVersion", "3.1.32")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("JemakEadPro.Models.Andamento", b =>

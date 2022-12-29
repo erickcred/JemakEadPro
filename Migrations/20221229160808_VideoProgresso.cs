@@ -2,7 +2,7 @@
 
 namespace JemakEadPro.Migrations
 {
-    public partial class IncioVideo : Migration
+    public partial class VideoProgresso : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
