@@ -1,33 +1,81 @@
 @model JemakEadPro.Models.Curso
 
 
-<div class="mt-5 container">
-    <h1>@Model.Nome</h1>
-    <div class="d-flex justify-content-between">
-        <div class="col-xs-4 col-md-4" id="player"></div>
-        <div class="col-xs-3 col-md-3 pull-right">
+<div class="container">
+    <h1 class="mb-5">@Model.Nome</h1>
+
+    <div class="d-flex flex-wrap-reverse flex-direction-row justify-content-between">
+
+        <div class="w-25 mt-2"><!-- <div class="col-xs-4 col-md-4 pull-right"> -->
             <div id='list' class="list-group">
                 @foreach (var video in Model.Videos)
                 {
-                    <a href="#" class="samba-playlist-trigger list-group-item"
+                    <span hidden id="projetoId">@video.Finalizado</span>
+                    @if (video.Finalizado)
+                    {
+                        <a style="border: 3px solid green; font-weight: 700; margin-bottom: 1px" href="#" class="idVideo video-finalizado samba-playlist-trigger list-group-item"
                         data-mediaid="@video.VideoId">@video.Nome</a>
+                    } else {
+                        <a style="border: 1px solid gray;" href="#" class="idVideo samba-playlist-trigger list-group-item"
+                            data-mediaid="@video.VideoId">@video.Nome</a>
+                    }
+
                 }
             </div>
         </div>
+        @* <div class="col-xs-3 col-md-6" id="player"></div> *@
+        <div class="" id="player"></div>
+
     </div>
 
 
-    <p class="statuslisten"></p>
+    <p>Vídeo Iniciado: (onStart) <span class="video-iniciado statuslisten"></span></p>
+    <p>Status Player: (onProgresse / onPause) <span class="event"></span></p>
 
-    <p class="event">onPause</p>
-    <p>Inicio Player: <span class="value"></span></p>
-
-    <p class="eventlisten">asdf</p>
-    <p>Progresso: <span class="valuelisten"></span></p>
+    <p>Progresso Player: <span class="value"></span></p>
+    @* <p>EventListen <span class="eventlisten"></span></p> *@
+    <p>Progresso onde Parou: <span class="valuelisten"></span></p>
 
     <p>Midia View: <span class="onMediaView"></span></p>
     <p>Midia View: <span onMediaView="onMediaViews()"></span></p>
 </div>
+
+<script>
+    let finalizado = document.querySelector(".statuslisten");
+    let btnFinalizar = document.querySelector("#videoFinalizado");
+    setInterval(() => {
+            
+        if (finalizado.textContent == "onFinish") {
+
+            document.querySelectorAll(".idVideo").forEach(item => {
+                if (item.classList.contains("active")) {
+                    document.querySelector("input[name='Id']").value = '@Model.Id';
+                    document.querySelector("input[name='VideoId']").value = item.getAttribute("data-mediaid");
+                }
+            });
+            document.querySelector("input[name='finalizado']").checked = true;
+
+            document.querySelector("#videoFinalizado").click();
+        }
+    }, 1000);
+
+    btnFinalizar.addEventListener("click", function(e) {
+        e.preventDefault();
+    });
+</script>
+
+
+<form action="finalizado" method="post">
+    <input type="number" name="Id">
+    <input type="text" name="VideoId">
+    <input type="checkbox" name="finalizado">
+    <button id="videoFinalizado">Finalizar</button>
+</form>
+
+
+
+
+
 
 <script type="text/javascript" samba-player-api="player"
     src="https://player.sambatech.com.br/v3/samba.player.api.js"></script>
@@ -73,8 +121,8 @@
         if (evt.isTrusted && player.sequence) {
             numMediaObj = findMediaPosition(playlistObj.medias, 'id', mediaId) + 1
         }
-        document.getElementsByClassName('samba-playlist-trigger list-group-item active')[0].className = 'samba-playlist-trigger list-group-item';
-        evt.target.className = "samba-playlist-trigger list-group-item active";
+        document.getElementsByClassName('idVideo samba-playlist-trigger list-group-item active')[0].className = 'idVideo samba-playlist-trigger list-group-item';
+        evt.target.className = "idVideo samba-playlist-trigger list-group-item active";
     }
 
     function onLoad(event) {
@@ -110,8 +158,6 @@
     let obj = new Object();
     let ids = new Array();
 
-    
-
     mediaIdHTML.forEach(media => {
         mediasId.push(media.attributes.getNamedItem("data-mediaid").nodeValue);
         titles.push(media.textContent);
@@ -120,10 +166,8 @@
             id: media.attributes.getNamedItem("data-mediaid").nodeValue,
             title: media.textContent
         }
-        
         ids.push(obj);
     });
-
 
     var playlistObj = {
         titles: [titles],
@@ -135,9 +179,9 @@
             ,
         onClick: 'onClick',
         loop: true,
-        timeout: 1,
-        autoplay: true,
-        sequence: true,
+        timeout: 12,
+        autoplay: false,
+        sequence: false,
     };
 </script>
 

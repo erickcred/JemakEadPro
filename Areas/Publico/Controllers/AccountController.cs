@@ -46,7 +46,7 @@ namespace JemakEadPro.Areas.Publico.Controllers
                     ClaimsPrincipal principal = new ClaimsPrincipal(new[] { identity });
 
                     await HttpContext.SignInAsync(principal);
-                    
+
                     return Redirect("/portal");
                 }
             }
